@@ -18,50 +18,75 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       <NavbarShell />
-      <section className="bg-neutral-900 py-14 text-white">
-        <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
-          <h1 className="mx-auto max-w-5xl text-4xl font-black uppercase leading-tight tracking-[0.02em] sm:text-5xl">{post.title}</h1>
-          <div className="mt-5 flex items-center justify-center gap-3 text-sm text-neutral-300">
-            <Link href="/">Home</Link>
-            <span>›</span>
-            <span className="truncate">{post.title}</span>
+      <section className="border-b border-neutral-100 bg-[#fafafa] px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF9500]">
+            {String(content.category || 'Update')}
+          </p>
+          <h1 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.02em] text-neutral-900 sm:text-4xl lg:text-[2.75rem]">
+            {post.title}
+          </h1>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-sm text-neutral-500">
+            <Link href="/" className="hover:text-[#FF9500]">
+              Home
+            </Link>
+            <span aria-hidden>·</span>
+            <Link href="/updates" className="hover:text-[#FF9500]">
+              Updates
+            </Link>
+            <span aria-hidden>·</span>
+            <span className="text-neutral-400">This article</span>
           </div>
         </div>
       </section>
       <main className="mx-auto grid max-w-6xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_280px]">
         <article>
-          <div className="border border-[#f0dfd7] bg-[#faece7] px-6 py-5 text-sm text-neutral-600">
-            <span className="mr-3 inline-block bg-neutral-800 px-3 py-1 text-white">{new Date(post.publishedAt || Date.now()).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-            <span>by {post.authorName || 'Editorial Desk'}</span>
+          <div className="rounded-[1rem] border border-neutral-200 bg-[#fafafa] px-5 py-4 text-sm text-neutral-600">
+            <span className="font-medium text-neutral-900">
+              {new Date(post.publishedAt || Date.now()).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </span>
+            <span className="mx-2 text-neutral-300">·</span>
+            <span>by {post.authorName || 'Editorial desk'}</span>
           </div>
-          <div className="prose prose-lg mt-10 max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-[0.01em]">
+          <div className="prose prose-neutral prose-lg mt-10 max-w-none">
             <RichContent html={html} />
           </div>
-          <div className="mt-12 grid gap-0 border border-neutral-200 md:grid-cols-2">
-            {recent.slice(0,2).map((item, index) => (
-              <Link key={item.id} href={`/updates/${item.slug}`} className="border-neutral-200 p-6 first:border-b md:first:border-b-0 md:first:border-r">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">{index === 0 ? 'Previous Post' : 'Next Post'}</p>
-                <p className="mt-3 text-lg leading-8 text-neutral-700">{item.title}</p>
+          <div className="mt-12 grid gap-0 overflow-hidden rounded-[1.25rem] border border-neutral-200 md:grid-cols-2">
+            {recent.slice(0, 2).map((item, index) => (
+              <Link
+                key={item.id}
+                href={`/updates/${item.slug}`}
+                className="border-neutral-200 p-6 transition hover:bg-[#fafafa] md:border-r md:last:border-r-0"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+                  {index === 0 ? 'Previous' : 'Next'}
+                </p>
+                <p className="mt-3 text-base font-medium leading-snug text-neutral-900">{item.title}</p>
               </Link>
             ))}
           </div>
         </article>
         <aside className="space-y-6">
-          <div className="border border-neutral-200 p-6">
-            <div className="flex items-center gap-0">
-              <input className="h-12 flex-1 border border-neutral-200 px-4 text-sm outline-none" placeholder="Type here to search" />
-              <button className="flex h-12 w-12 items-center justify-center bg-neutral-800 text-white">Q</button>
-            </div>
-          </div>
-          <div className="border border-neutral-200 p-6">
-            <div className="space-y-5">
+          <div className="rounded-[1.25rem] border border-neutral-200 bg-[#fafafa] p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">More updates</p>
+            <div className="mt-4 space-y-3">
               {recent.map((item) => (
-                <Link key={item.id} href={`/updates/${item.slug}`} className="block border-b border-neutral-200 pb-5 last:border-b-0 last:pb-0">
-                  <p className="text-base leading-7 text-neutral-700">{item.title}</p>
+                <Link key={item.id} href={`/updates/${item.slug}`} className="block text-sm text-neutral-700 hover:text-[#FF9500]">
+                  {item.title}
                 </Link>
               ))}
             </div>
           </div>
+          <Link
+            href="/contact"
+            className="block rounded-[1.25rem] border border-[#FF9500]/30 bg-[#FF9500]/8 p-6 text-center text-sm font-semibold text-neutral-900 transition hover:bg-[#FF9500]/12"
+          >
+            Need placements for this niche? Talk to the desk.
+          </Link>
         </aside>
       </main>
       <Footer />
