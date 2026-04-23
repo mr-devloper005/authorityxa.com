@@ -1,29 +1,85 @@
-﻿import { PageShell } from '@/components/shared/page-shell'
-import { Card, CardContent } from '@/components/ui/card'
+﻿import type { Metadata } from 'next'
+import Link from 'next/link'
+import { MediaDistroPageLayout, MediaDistroSection } from '@/components/marketing/media-distro-page-layout'
+import { buildPageMetadata } from '@/lib/seo'
+import { SITE_CONFIG } from '@/lib/site-config'
 
-const sections = [
-  { title: 'Essential Cookies', body: 'Required for authentication and core features.' },
-  { title: 'Analytics Cookies', body: 'Help us understand how the platform is used.' },
-  { title: 'Preference Cookies', body: 'Remember your settings and saved filters.' },
-]
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata({
+    path: '/cookies',
+    title: `Cookie Policy — ${SITE_CONFIG.name}`,
+    description: `How ${SITE_CONFIG.name} uses cookies and similar technologies on this marketing site and related tools.`,
+  })
+}
 
 export default function CookiesPage() {
   return (
-    <PageShell
+    <MediaDistroPageLayout
+      eyebrow="Legal"
       title="Cookie Policy"
-      description="Details about the cookies we use."
+      subtitle="A clear view of the cookies and local storage we use to keep the site reliable, secure, and easy to navigate."
+      wide
     >
-      <Card className="border-border bg-card">
-        <CardContent className="p-6 space-y-4">
-          <p className="text-xs text-muted-foreground">Last updated: March 16, 2026</p>
-          {sections.map((section) => (
-            <div key={section.title} className="rounded-lg border border-border bg-secondary/40 p-4">
-              <h3 className="text-sm font-semibold text-foreground">{section.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{section.body}</p>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
-    </PageShell>
+      <p className="text-xs text-neutral-500">Last updated: April 23, 2026</p>
+
+      <div className="mt-10 space-y-0">
+        <MediaDistroSection title="Overview">
+          <p>
+            Like most modern sites, {SITE_CONFIG.name} uses small text files and similar technologies (&ldquo;cookies&rdquo;)
+            to remember preferences, protect forms, and understand aggregate traffic. This page describes what runs on
+            our public marketing pages—not third-party publisher sites where your placements may appear.
+          </p>
+        </MediaDistroSection>
+
+        <MediaDistroSection title="Strictly necessary">
+          <p>
+            These cookies are required for core functionality such as load balancing, security (for example CSRF
+            protection where implemented), and remembering privacy choices. They cannot be switched off in our systems
+            without breaking basic features.
+          </p>
+        </MediaDistroSection>
+
+        <MediaDistroSection title="Functional">
+          <p>
+            Functional cookies remember choices you make—like theme or language when we expose those controls—so you
+            do not have to reconfigure them on every visit. They do not track you across unrelated websites.
+          </p>
+        </MediaDistroSection>
+
+        <MediaDistroSection title="Analytics">
+          <p>
+            We may use first-party or privacy-oriented analytics to see which pages are visited, approximate geography,
+            and technical errors. Where required, we gate analytics behind consent banners and only enable measurement
+            after you opt in.
+          </p>
+        </MediaDistroSection>
+
+        <MediaDistroSection title="Third parties">
+          <p>
+            Embedded content (for example a hosted video or map) may set its own cookies governed by that provider&apos;s
+            policy. We limit embeds on marketing pages and review vendors periodically.
+          </p>
+        </MediaDistroSection>
+
+        <MediaDistroSection title="Managing cookies">
+          <p>
+            Use your browser settings to block or delete cookies. You can also install industry opt-out tools where
+            available. Blocking strictly necessary cookies may affect site stability. For questions, see{' '}
+            <Link href="/privacy" className="font-semibold text-[#FF9500] hover:underline">
+              Privacy Policy
+            </Link>{' '}
+            or{' '}
+            <Link href="/contact" className="font-semibold text-[#FF9500] hover:underline">
+              Contact
+            </Link>
+            .
+          </p>
+        </MediaDistroSection>
+
+        <MediaDistroSection title="Updates">
+          <p>We will revise this policy when our stack or legal obligations change. Check the date above when you revisit.</p>
+        </MediaDistroSection>
+      </div>
+    </MediaDistroPageLayout>
   )
 }

@@ -15,6 +15,7 @@ import { getProductKind, type ProductKind } from '@/design/factory/get-product-k
 import type { SitePost } from '@/lib/site-connector'
 import { getHomeEditorialMockPosts, mergeEditorialPostsForHome } from '@/lib/home-editorial-mock'
 import { HOME_PAGE_OVERRIDE_ENABLED, HomePageOverride } from '@/overrides/home-page'
+import { MediaDistroLanding } from '@/components/home/media-distro-landing'
 
 export const revalidate = 300
 
@@ -40,6 +41,11 @@ const taskIcons: Record<TaskKey, any> = {
   classified: Tag,
   image: ImageIcon,
   profile: User,
+  mediaDistribution: FileText,
+  social: LayoutGrid,
+  pdf: FileText,
+  org: Building2,
+  comment: FileText,
 }
 
 function resolveTaskKey(value: unknown, fallback: TaskKey): TaskKey {
@@ -668,7 +674,10 @@ export default async function HomePage() {
           brandPack={recipe.brandPack}
         />
       ) : null}
-      {productKind === 'editorial' ? (
+      {productKind === 'editorial' && recipe.primaryTask === 'mediaDistribution' ? (
+        <MediaDistroLanding />
+      ) : null}
+      {productKind === 'editorial' && recipe.primaryTask !== 'mediaDistribution' ? (
         <EditorialHome primaryTask={primaryTask} posts={editorialPosts} supportTasks={supportTasks} />
       ) : null}
       {productKind === 'visual' ? (
