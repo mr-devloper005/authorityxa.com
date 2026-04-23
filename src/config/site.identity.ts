@@ -1,10 +1,10 @@
 export const siteIdentity = {
   code: process.env.NEXT_PUBLIC_SITE_CODE || 'f955vfu9tm',
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Authorityxa',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Independent media updates',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'MediaDistro',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Premium guest post distribution',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
-    'A simple newsroom-style publication for announcements, coverage, and media updates on Authorityxa.',
+    'Strategic guest post placements on high-authority publishers—niche-relevant backlinks, transparent pricing, and fast reporting.',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'authorityxa.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://authorityxa.com',
   ogImage: process.env.NEXT_PUBLIC_SITE_OG_IMAGE || '/og-default.png',

@@ -2,16 +2,16 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Independent news desk',
+    tagline: 'Guest posts & publisher outreach',
   },
   footer: {
-    tagline: 'Simple publishing for press-style updates',
+    tagline: 'Premium content distribution',
   },
   hero: {
-    badge: 'Latest updates',
-    title: ['Clear publishing, simple reading, no extra noise.'],
+    badge: 'Guest posting network',
+    title: ['Strategic placements on sites your audience already trusts.', 'Premium inventory, clear reporting, fast turnaround.'],
     description:
-      'A minimal article-style publishing template built for regular updates, announcements, and media distribution posts.',
+      'High-authority guest posts, transparent pricing, and reporting built for agencies and in-house SEO teams.',
     primaryCta: {
       label: 'Browse latest posts',
       href: '/updates',
@@ -29,16 +29,16 @@ export const siteContent = {
   },
   home: {
     metadata: {
-      title: 'Latest updates and newsroom posts',
+      title: 'Guest post distribution & high-authority backlinks',
       description:
-        'Read the latest updates, announcements, and stories through a simple archive-first publishing experience.',
-      openGraphTitle: 'Latest updates and newsroom posts',
+        'Scale SEO-safe guest posting with vetted publishers, niche-relevant placements, and live-link reporting.',
+      openGraphTitle: 'Guest post distribution & high-authority backlinks',
       openGraphDescription:
-        'A simple publishing template for updates, announcements, and readable article pages.',
-      keywords: ['newsroom posts', 'latest updates', 'announcements', 'press articles'],
+        'Premium guest post placements, DA/DR-focused inventory, and fast turnaround for agencies and brands.',
+      keywords: ['guest posts', 'link building', 'SEO outreach', 'publisher network', 'backlinks', 'content distribution'],
     },
-    introBadge: 'About',
-    introTitle: 'A quiet publishing template made for regular updates.',
+    introBadge: 'Distribution',
+    introTitle: 'A focused partner for editorial placements and measurable SEO outcomes.',
     introParagraphs: [
       'This template is designed for sites that publish straightforward updates and want the homepage to behave like a clean front page rather than a product landing page.',
       'Posts are visible immediately, archives stay easy to scan, and the reading page keeps the focus on the article itself.',
@@ -108,8 +108,8 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'Open PDFs and downloadable files.',
   },
   mediaDistribution: {
-    title: 'Latest updates',
-    description: 'Read the latest published updates and announcements.',
+    title: 'Publisher updates',
+    description: 'Notes from the network—placement tips, policy updates, and campaign guidance.',
   },
 }
 
@@ -128,10 +128,10 @@ export const taskIntroCopy: Record<
   comment: { title: 'Comments', paragraphs: ['Commentary and response posts.'], links: [{ label: 'Home', href: '/' }] },
   org: { title: 'Organizations', paragraphs: ['Organization pages and entities.'], links: [{ label: 'Home', href: '/' }] },
   mediaDistribution: {
-    title: 'Latest updates',
+    title: 'Publisher updates',
     paragraphs: [
-      'This archive is designed for straightforward publishing: regular updates, announcements, and media-style posts presented in a clean reading format.',
-      'The layout stays simple so visitors can scan headlines quickly, open stories easily, and move through the archive without distraction.',
+      'Short updates from our editorial and partnerships team—placement quality, niche coverage, and what to expect when campaigns go live.',
+      'Scan headlines for quick guidance, or open a post for the full brief. No galleries or thumbnails—just readable text.',
     ],
     links: [
       { label: 'Home', href: '/' },
